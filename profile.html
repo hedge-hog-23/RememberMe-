@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            margin: 0;
+            
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile {
+            background-image: linear-gradient(rgb(249, 19, 180), rgb(28, 140, 220));
+            max-width: 300px;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            text-align: center;
+            padding: 30px;
+            box-shadow: 0px 0px 20px 0px #4169e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn {
+            border: 2px solid #fff;
+            color: #fff;
+            background-color: #4169e1;
+            border-radius: 50%;
+            position: absolute;
+            left: 58%;
+            top: 58%;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #plus{
+            font-size: 30px;
+        }
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .profile h2 {
+            margin-top: 10px;
+            color: #000;
+        }
+
+        p {
+            color: #000;
+        }
+
+        .user-details {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        input[type="text"], input[type="tel"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: transparent;
+            color: #fff;
+        }
+
+        textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: transparent;
+            color: #fff;
+        }
+
+        .save-button {
+            background-color: rgb(45, 215, 54);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        ::placeholder {
+            color: black;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <div class="profile">
+        <div class="upload-btn-wrapper">
+            <img id="user-image" src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg" alt="">
+            <div class="btn" onclick="document.getElementById('profile-picture').click();"><span id="plus">+</span></div>
+            <input type="file" name="profile-picture" id="profile-picture" accept="image/*" style="display: none;" onchange="showPreview(this);">
+        </div>
+        <h2>Username: JohnDoe</h2>
+        <h3>Email: johndoe@example.com</h3>
+        <div class="user-details">
+            <input type="tel" name="mobile" placeholder="Mobile Number">
+            <input type="text" name="address" placeholder="Address">
+            <textarea name="about" placeholder="About the user"></textarea>
+            <button class="save-button">Save</button>
+        </div>
+    </div>
+
+    <script>
+        function showPreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('user-image').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
